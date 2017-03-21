@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithm} % Boxes/formatting around algorithms
+\usepackage[noend]{algpseudocode} % Algorithms
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+\def\Name{Samuel Cuthbertson}  % Your name
+\def\Homework{3} % Number of Homework
+\def\Session{Spring 2015}
+
+
+\title{Discrete Structures --- Problem Set \Homework}
+\author{\Name}
+\markboth{\Homework\ \Name}{Problem Set \Homework\ \; \Name}
+\pagestyle{myheadings}
+\date{}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproofmark{$\Box$}
+\newenvironment{proof}{\par{\bf Proof}:}{\endproofmark\smallskip}
+
+\textheight=9in
+\textwidth=6.5in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+This problem can be thought of in terms of the product rule: There are 4 distinct ways of arranging the orange, so we start with 4. For each of those 4 ways, we have 5 ways (each) of adjusting remaining 3 positions, so we multiply $5^3 * 4 = 5 * 5 * 5 * 4$ to obtain the answer of 500 ways to arrange a mastermind code with only one orange in it.
+
+\section*{Problem 2}
+Since a palindrome is simply the first two items in the code reflected and then repeated, we can simply analyze the number of ways to arrange two items, which is obviously $6^2 = 36$ possible palindromes.
+c
+\section*{Problem 3}
+Since there are $13!$ ways of rearranging the hearts, and $39!$ ways of rearranging the rest of the cards, there is $39! * 13! = 127,018,035,995,563,768,701,074,894,112,235,531,821,058,621,440,000,000,000$ ways of rearranging a deck of cards with one suite set aside.
+
+\section*{Problem 4}
+The answer to this question with a word that has no repeat letters is simply $12!$. The difficulty in this question is accounting for the 5 repeat letters. We can do that through using \textbf{C(a,b)}. For all the P's, there are C(12, 2) ways of choosing where they go. For each of those ways, there are C(10, 2) ways of choosing where the two H's go. For each of those, there are C(8, 2) ways of choosing where the I's go, and so on with C(6, 2) for L and C(4, 2) for A. This leaves D and E with two possible positions for each combination of the above letters, or 2!. That means our answer is $C(12, 2) * C(10, 2) * C(8, 2) * C(6, 2) * C(4, 2) * 2! = 14,968,800$ possible combinations.
+
+\section*{Problem 5}
+Since there are 13 possible ranks for set of three cards of matching rank, there are 12 possible ranks for the set of 2 cards. For the second set, we also have the choice of 2 out of 3 cards. That means the answer is $13 * 12 * C(3, 2) = 468$. This only works if we are only considering 3 possible suites, as we are in this problem.
+
+\section*{Problem 6}
+This is very similar to Problem 4 if we approach it as a sting of 7 U's (Up motions) and 7 R's (Right motions) such as UUUUUUURRRRRRR or URURURURURURUR. In that case, we have C(14, 7) possible ways of placing the U's and C(7, 7) ways of placing the R's for each arrangement of U's. In other words, the answer is $C(14, 7) * C(7, 7) = 3432$.
+
+\section*{Problem 7}
+In order to exclude the paths that go through (3,3), we can simply subtract the number of possible arrangments which end in (3,3) and then multiply my the number of arrangments which go from (3,3) to (8,8), since for each path to (3,3) there is a number of possible paths to (8,8). This is shown below:
+\[C(14, 7) * C(7, 7) - \Big(C(4, 2) * C(2, 2) * C(10, 5) * C(5, 5)\Big) = 1920\]
+
+\section*{Problem 8}
+For this porblem, we must first exclude the paths that go through (6,6) in addition to using the above formula which excludes the paths through (3,3). Since that addition is the same as the addition done in the above problem ( 8-6 = 2 = 3-1 ), we can multiply $C(4, 2) * C(2, 2) * C(10, 5) * C(5, 5)$ by two and subtract it. We must now add back double the number of paths from (1,1) to (8,8) through both (3,3) and (6,6) since we have effectively removed them twice. That number is the number of paths from (1,1) to (3,3) times the number of paths from (3,3) to (6,6) times the number of paths from (6,6) to (8,8), as shown below:
+\begin{center}
+\begin{align}
+C(14, 7) * C(7, 7) - &2\Big(C(4, 2) * C(2, 2) * C(10, 5) * C(5, 5)\Big) \\ + &2\Big(C(4, 2) * C(2, 2) * C(6, 3) * C(3, 3) * C(4, 2) * C(2, 2)\Big) = 1848
+\end{align}
+\end{center}
+
+\section*{Problem 9}
+Since the number of integers between 1 and 10 which are divisible by 3 is 3, and the number of integers divisible by 4 is 2, and the number of integers that meet both of those criteria and are also no divisible by five is 4, that means the number of integers that meet all three of those criteria on 0 to 2000 is $4 *200 = 800$ which we then need to add 1 to since 2001 is divisible by 3 and not 5. Thus, the answer is 801.
+
+\newpage
+\section*{Problem 10}
+Note that our sequence is the left half of the odd rows from Pascal's Triangle, as shown below.
+\begin{center}
+\begin{tabular}{rccccccccccccccccccccc}
+&    &    &    &    &    &    &    &    &  1 &    &  2 &    &  1\\\noalign{\smallskip\smallskip}
+\color{red}$n=3$:&    &    &    &    &    &    &    &  1 &    &  \textcolor{red}{3} &    &  3 &    &  1\\\noalign{\smallskip\smallskip}
+&    &    &    &    &    &    &  1 &    &  4 &    &  6 &    &  4 &    &  1\\\noalign{\smallskip\smallskip}
+\color{red}$n=5$:&    &    &    &    &    &  1 &    &  \color{red}5 &    & \color{red}10 &    & 10 &    &  5 &    &  1\\\noalign{\smallskip\smallskip}
+&    &    &    &    &  1 &    &  6 &    & 15 &    & 20 &    & 15 &    &  6 &    &  1\\\noalign{\smallskip\smallskip}
+\color{red}$n=7$:&    &    &    &  1 &    &  \color{red}7 &    & \color{red}21 &    & \color{red}35 &    & 35 &    & 21 &    &  7 &    &  1\\\noalign{\smallskip\smallskip}
+&    &    &  1 &    &  8 &    & 28 &    & 56 &    & 70 &    & 56 &    & 28 &    &  8 &    &  1\\\noalign{\smallskip\smallskip}
+\color{red}$n=9$:&    &  1 &    &  \color{red}9 &    & \color{red}36 &    & \color{red}84 &    & \color{red}126 &    & 126 &    & 84 &    & 36 &    &  9 &    &  1\\\noalign{\smallskip\smallskip}
+\end{tabular}
+\end{center}
+
+Looking at it this way, it's obvious to see how the 1's from the edge will ensure an odd number of odd numbers in each odd numbered row, since there will always be that first odd number in the sequence, and either all evens following it or all odds following it. If it's all evens, then there is only one odd number, and if it's all odds, then there is one plus some even number of odd numbers that are all odd together, and both of those circumstances fit the criteria.
+
+\end{document}

@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithm} % Boxes/formatting around algorithms
+\usepackage[noend]{algpseudocode} % Algorithms
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+\def\Name{Samuel Cuthbertson}  % Your name
+\def\Homework{2} % Number of Homework
+\def\Session{Spring 2015}
+
+
+\title{Discrete Structures --- Problem Set \Homework}
+\author{\Name}
+\markboth{\Homework\ \Name}{\Homework\ \Name}
+\pagestyle{myheadings}
+\date{}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproofmark{$\Box$}
+\newenvironment{proof}{\par{\bf Proof}:}{\endproofmark\smallskip}
+
+\textheight=9in
+\textwidth=6.5in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+The ``pile method'' can be rewritten as $pile(n) = \sum\limits_{i=1}^{n-1}(i)$ The proof of this is as follows:
+\[ Given \ pile(1) = 1, \ and \ pile(n) = \sum\limits_{i=1}^{n-1}(i) \ for \ all \ n <= 10 \]
+\[ Then \ pile(k+1) =  \sum\limits_{i=1}^{k}(i) = pile(k) + (k) = \sum\limits_{i=1}^{k-1}(i) + k \ for \ all \ n \in \\R \]
+Which is a valid strong induction proof, since $ \sum\limits_{i=1}^{k}(i) = \sum\limits_{i=1}^{k-1}(i) + k$.
+
+\section{Problem 2}
+\begin{qparts}
+\item
+Using the same method as described in the phrasing of question 2, we can obtain
+\[ J\ mod\ 3 = 2\qquad J\ mod\ 5=0\qquad J\ mod\ 7=3\]
+\[ 3*(-3) + 5*(2) = 1 \implies 3*(-3)*(0) + 5 * (2) * (2) = 20 \]
+And now solving for the final answer given that product and J mod 7 = 3
+\[J\ mod\ 15=20\qquad J\ mod\ 7=3\]
+\[ 15*(-\frac{4}{17}) + 5*(\frac{11}{17}) = 1 \implies 15*(-\frac{4}{17})*(3) + 7 * (\frac{11}{17}) * (20) = 80 \]
+
+\item
+And for the general, we can use the exact same method:
+\[ J\ mod\ 11 = 1\qquad J\ mod\ 13=8\qquad J\ mod\ 17=2 \]
+\[ 11*(1) + 13*(-\frac{10}{13}) = 1 \implies 11*(1)*(8) + 13*(\frac{-10}{13})*(1) = 78 \]
+\[J\ mod\ 143=78\qquad J\ mod\ 17=2\]
+\[ 143*(-\frac{347}{988}) + 17*(\frac{229}{76}) = 1 \implies 143*(-\frac{347}{988})*2 + 17*(\frac{229}{76})*(78) = 3895 \]
+
+\end{qparts}
+
+\section{Problem 3}
+\begin{qparts}
+\item
+We can say that all the exponents must either be 3 or be 0, since any $n^3$ can be factored out into some number of primes $p_1^3 * p_2^3 * ... * p_i^3$.
+
+\item
+From staring at the list here (https://www.math.upenn.edu/~deturck/m170/wk2/divisors.html), the pattern that pops out is $\sum\limits_{i=1}^{n}(2*e_n)$
+
+\end{qparts}
+
+\section{Problem 4}
+\begin{qparts}
+\item
+This is the definition of Euler's Totient. In the example, 5 and 7 are distinct primes, so the totient is equal to (5-1)(7-1).
+
+\item
+If $m=p^k$, the numbers that have a common factor with m are all the multiples of p. There are $p^{k-1}$ multiples, so the totient of $p^k$ is $p^k - p^{k-1}$
+
+\end{qparts}
+
+\section{Problem 5}
+	Note that: \\
+Regular 3-gons: 1 \\
+Regular 4-gons: 1 \\
+Regular 5-gons: 2 \\
+Regular 6-gons: 1 \\
+Regular 7-gons: 3 \\
+Regular 8-gons: 2 \\
+Regular 9-gons: 4 \\
+Regular 10-gons: 2 \\
+Regular 11-gons: 5 \\
+
+Thus, the number of distinct n-gons is \textbf{$\frac{n-1}{2}$} if n is odd and \textbf{$\frac{n-2}{2}$} if n is even, and n-gon(47) = $\frac{47-1}{2} = \frac{46}{2} = 23$.
+\end{document}

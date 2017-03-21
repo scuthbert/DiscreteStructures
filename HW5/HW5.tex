@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithm} % Boxes/formatting around algorithms
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+
+\renewcommand{\arraystretch}{1.25}
+
+\def\Name{Samuel Cuthbertson}  % Your name
+\def\Homework{5} % Number of Homework
+\def\Session{Spring 2015}
+
+
+\title{Discrete Structures --- Problem Set \Homework}
+\author{\Name}
+\markboth{\Homework\ \Name}{Problem Set \Homework\ \; \Name}
+\pagestyle{myheadings}
+\date{}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproofmark{$\Box$}
+\newenvironment{proof}{\par{\bf Proof}:}{\endproofmark\smallskip}
+
+\textheight=9in
+\textwidth=6.5in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+The probability that the flipped coin C is fair can be found using Bayes Rule, as follows:
+\[ P(C\;is\;fair\:|\:two\;heads\;in\;a\;row) = \frac{P(two\;heads\;in\;a\;row\:|\:C\;is\;fair) * P(C\;is\;fair)}{P(two\;heads\;in\;a\;row)} \]
+\[ P(C\;is\;fair\:|\:two\;heads\;in\;a\;row) = \]
+\[\frac{P(two\;heads\;in\;a\;row\:|\:C\;is\;fair) * P(C\;is\;fair)}{P(two\;heads\;in\;a\;row\:|\:C\;is\;fair) + P(two\;heads\;in\;a\;row\:|\:C\;isn't\;fair)}\]
+\[ P(C\;is\;fair\:|\:two\;heads\;in\;a\;row) = \frac{.25 * .5}{.25 + 1} = \frac{1}{10}\]
+
+\section*{Problem 2}
+Note that $P(C)=0.5$, $P(R|C)=0.6$, $P(R|\neg C)=0.3$, $P(W|R)=0.5$, and $P(W|\neg R)=0.8$
+
+\subsection*{Part A}
+What is $P(R)$ and $P(W)$?
+\[P(R) = P(C) * P(R|C) + P(\neg C) * P(R|\neg C) = .5 * .6 + .5 * .3 = .45 \]
+\[P(W) = P(R) * P(W|R) + P(\neg R) + P(W|\neg R) = .45 * .5 + .55 * .8 = .665 \]
+
+\subsection*{Part B}
+What is $P(C|W)$?
+\[P(C|W) = \frac{P(W|C) * P(C)}{P(W)} =  \frac{\Big(P(W|R) * P(R|C) + P(W|\neg R) * P(\neg R|C)\Big) * P(C)}{P(W)} \]
+\[P(C|W) = \frac{\Big( .5 * .6 + .8 * .4\Big) * .5}{.665} = \frac{62}{133} \approx .4662 \]
+
+\subsection*{Part C}
+What is $P(R|\neg C, W)$?
+\[P(R|\neg C, W) = P(R|\neg C) * P(R|W) = P(R|\neg C) * \frac{P(W|R) * P(W)}{P(R)}\]
+\[P(R|\neg C, W) = .3 * \frac{.5 * .665}{.45} = \frac{133}{600} \approx .2216 \]
+
+\section*{Problem 3}
+Since the degree of a vertex is the count of all edges to that vertex, and every edge has two vertices, the sum of the degrees of all the vertices is twice the number of edges and therefor even. Likewise, the sum of degrees of all the even degree's vertices is obviously even, so the sum of degrees of all the odd degree vertices must also be even. This means there must be an even number of odd degree vertices, since there are no two odd numbers which multiply to an even number.
+
+\section*{Problem 4}
+\subsection*{Part A}
+This graph should have an Euler Circuit because all of it's vertices have an even degree. One can be found on the path $EA \rightarrow AB \rightarrow BD \rightarrow DA \rightarrow AC \rightarrow CD \rightarrow DF \rightarrow FC \rightarrow CE$
+
+\subsection*{Part B}
+A Hamiltonian Cycle can be found starting at E, on the path $E \rightarrow A \rightarrow B \rightarrow D \rightarrow F \rightarrow C \rightarrow E$
+
+\end{document}
